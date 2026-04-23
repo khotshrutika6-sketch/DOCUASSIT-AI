@@ -1,0 +1,303 @@
+{
+  "passport": {
+    "id": "passport",
+    "name": "Passport",
+    "icon": "🛂",
+    "category": "Identity",
+    "description": "Official travel document issued by Government of India",
+    "applyLink": "https://www.passportindia.gov.in",
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "PAN Card",
+      "Birth Certificate",
+      "Address Proof",
+      "Photographs"
+    ],
+    "steps": [
+      { "number": 1, "title": "Register", "description": "Create an account on the official portal", "duration": "5m", "online": true },
+      { "number": 2, "title": "Fill Form", "description": "Complete the online application", "duration": "30m", "online": true },
+      { "number": 3, "title": "Payment", "description": "Pay the application fee", "duration": "2m", "online": true },
+      { "number": 4, "title": "Appointment", "description": "Visit the Passport Seva Kendra", "duration": "1-2h", "online": false }
+    ],
+    "estimatedTime": "15-30 days",
+    "fees": "₹1,500",
+    "processType": "Online + Office Visit",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "After online form submission",
+    "tips": ["Carry original documents", "Reach early"],
+    "warnings": ["Avoid middle-men"],
+    "commonIssues": []
+  },
+  "aadhar": {
+    "id": "aadhar",
+    "name": "Aadhaar Card",
+    "icon": "🆔",
+    "category": "Identity",
+    "description": "12-digit unique identity number issued by UIDAI",
+    "applyLink": "https://uidai.gov.in",
+    "requiredDocuments": ["Proof of Identity", "Proof of Address", "Date of Birth Proof"],
+    "steps": [
+      { "number": 1, "title": "Locate Center", "description": "Find your nearest Aadhaar center", "duration": "2m", "online": true },
+      { "number": 2, "title": "Visit Center", "description": "Enroll with biometrics", "duration": "1h", "online": false },
+      { "number": 3, "title": "Wait", "description": "Processing usually takes a few weeks", "duration": "90 days", "online": false }
+    ],
+    "estimatedTime": "90 days",
+    "fees": "Free",
+    "processType": "In-Person Enrollment",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "Once for biometric capture",
+    "tips": ["Ensure mobile number is linked"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "pan": {
+    "id": "pan",
+    "name": "PAN Card",
+    "icon": "💳",
+    "category": "Finance",
+    "description": "Permanent Account Number for tax purposes",
+    "applyLink": "https://www.onlineservices.nsdl.com",
+    "requiredDocuments": ["Aadhaar", "Identity Proof", "Address Proof"],
+    "steps": [
+      { "number": 1, "title": "Apply Online", "description": "Fill Form 49A/49AA", "duration": "15m", "online": true },
+      { "number": 2, "title": "Verify", "description": "Digital or Physical verification", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "15 days",
+    "fees": "₹107",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Use e-KYC for faster processing"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "dl": {
+    "id": "dl",
+    "name": "Driving License",
+    "icon": "🚗",
+    "category": "Transport",
+    "description": "Legal license to drive vehicles in India",
+    "applyLink": "https://parivahan.gov.in",
+    "requiredDocuments": ["Aadhaar", "Address Proof", "Age Proof", "Learner's License"],
+    "steps": [
+      { "number": 1, "title": "Learner's License", "description": "Apply and pass the test", "duration": "1 day", "online": false },
+      { "number": 2, "title": "Driving Test", "description": "Book a slot and pass the test at RTO", "duration": "4h", "online": false }
+    ],
+    "estimatedTime": "60 days",
+    "fees": "₹200 - ₹1000",
+    "processType": "Online + Driving Test",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "For Learners and Driving Test",
+    "tips": ["Practice well before the test"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "voter": {
+    "id": "voter",
+    "name": "Voter ID",
+    "icon": "🗳️",
+    "category": "Identity",
+    "description": "Identity card used for voting in elections",
+    "applyLink": "https://www.nvsp.in",
+    "requiredDocuments": ["Identity Proof", "Address Proof", "Age Proof"],
+    "steps": [
+      { "number": 1, "title": "Apply Online", "description": "Fill Form 6 on NVSP portal", "duration": "15m", "online": true }
+    ],
+    "estimatedTime": "30 days",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": [],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "digilocker": {
+    "id": "digilocker",
+    "name": "DigiLocker",
+    "icon": "📂",
+    "category": "Digital",
+    "description": "Store and access documents digitally",
+    "applyLink": "https://www.digilocker.gov.in",
+    "requiredDocuments": ["Aadhaar", "Mobile Phone"],
+    "steps": [
+      { "number": 1, "title": "Sign Up", "description": "Register with mobile and Aadhaar", "duration": "2m", "online": true }
+    ],
+    "estimatedTime": "Instant",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Keep your Aadhaar linked mobile handy"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "epf": {
+    "id": "epf",
+    "name": "EPF (Provident Fund)",
+    "icon": "💰",
+    "category": "Finance",
+    "description": "Employee savings and retirement fund",
+    "applyLink": "https://www.epfindia.gov.in",
+    "requiredDocuments": ["UAN", "Aadhaar", "Bank Details"],
+    "steps": [
+      { "number": 1, "title": "UAN Activation", "description": "Activate your Universal Account Number", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "Variable",
+    "fees": "N/A",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": [],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "abha": {
+    "id": "abha",
+    "name": "Health ID (ABHA)",
+    "icon": "🏥",
+    "category": "Health",
+    "description": "Digital health identity card",
+    "applyLink": "https://abha.abdm.gov.in",
+    "requiredDocuments": ["Aadhaar", "Mobile"],
+    "steps": [
+      { "number": 1, "title": "Create ABHA", "description": "Generate your digital health ID", "duration": "2m", "online": true }
+    ],
+    "estimatedTime": "Instant",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": [],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "ration": {
+    "id": "ration",
+    "name": "Ration Card",
+    "icon": "🌾",
+    "category": "Welfare",
+    "description": "Access subsidized food grains",
+    "applyLink": "https://nfsa.gov.in",
+    "requiredDocuments": ["Aadhaar", "Family Income Proof", "Address Proof"],
+    "steps": [
+      { "number": 1, "title": "Apply at Portal", "description": "Visit state-specific NFSA portal", "duration": "20m", "online": true }
+    ],
+    "estimatedTime": "30 days",
+    "fees": "Nominal",
+    "processType": "Online + Verification",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "If state verification fails digitally",
+    "tips": [],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "income_certificate": {
+    "id": "income_certificate",
+    "name": "Income Certificate",
+    "icon": "📋",
+    "category": "Identity",
+    "description": "Proof of annual income for scholarships and subsidies",
+    "applyLink": "https://serviceonline.gov.in",
+    "requiredDocuments": ["Aadhaar", "Salary Slip / Income Proof", "Address Proof"],
+    "steps": [
+      { "number": 1, "title": "Apply at e-District", "description": "Visit your state's e-District portal", "duration": "15m", "online": true },
+      { "number": 2, "title": "Document Verification", "description": "Verification by local Patwari / Tehsildar", "duration": "7-15 days", "online": false }
+    ],
+    "estimatedTime": "15 days",
+    "fees": "₹20 - ₹50",
+    "processType": "Online + Local Verification",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "Visit to local Tehsil may be required",
+    "tips": ["Keep your employment or agriculture income details ready"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "birth_certificate": {
+    "id": "birth_certificate",
+    "name": "Birth Certificate",
+    "icon": "👶",
+    "category": "Identity",
+    "description": "Official record of birth for identity and age proof",
+    "applyLink": "https://crsorgi.gov.in",
+    "requiredDocuments": ["Hospital Discharge Paper", "Parents' Aadhaar", "Marriage Certificate (Optional)"],
+    "steps": [
+      { "number": 1, "title": "Hospital Registration", "description": "If born in hospital, they usually register it", "duration": "1 day", "online": false },
+      { "number": 2, "title": "Apply at Municipal Corp", "description": "Or apply online at CRS portal within 21 days", "duration": "15m", "online": true }
+    ],
+    "estimatedTime": "7-14 days",
+    "fees": "Free if registered within 21 days",
+    "processType": "Hospital / Municipal Visit",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "Visit to Registrar office for collection",
+    "tips": ["Always register within 21 days to avoid complex late registration processes"],
+    "warnings": ["Late registration requires an affidavit from a magistrate"],
+    "commonIssues": []
+  },
+  "eshram": {
+    "id": "eshram",
+    "name": "E-Shram Card",
+    "icon": "👷",
+    "category": "Welfare",
+    "description": "National Database of Unorganized Workers",
+    "applyLink": "https://register.eshram.gov.in",
+    "requiredDocuments": ["Aadhaar", "Bank Account Details", "Mobile linked with Aadhaar"],
+    "steps": [
+      { "number": 1, "title": "Self Registration", "description": "Visit e-Shram portal and enter Aadhaar linked mobile", "duration": "5m", "online": true },
+      { "number": 2, "title": "Fill Details", "description": "Enter occupation and bank details", "duration": "10m", "online": true },
+      { "number": 3, "title": "Download UAN Card", "description": "Download your E-Shram Universal Account Number card", "duration": "Instant", "online": true }
+    ],
+    "estimatedTime": "Instant",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Ensure your mobile is linked to your Aadhaar card before applying"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "ayushman": {
+    "id": "ayushman",
+    "name": "Ayushman Bharat Card",
+    "icon": "🩺",
+    "category": "Health",
+    "description": "Health coverage of up to ₹5 Lakhs per family per year",
+    "applyLink": "https://beneficiary.nha.gov.in",
+    "requiredDocuments": ["Aadhaar", "Ration Card / PMJAY Letter"],
+    "steps": [
+      { "number": 1, "title": "Check Eligibility", "description": "Login as beneficiary on the PMJAY portal", "duration": "2m", "online": true },
+      { "number": 2, "title": "e-KYC", "description": "Verify identity using Aadhaar OTP or Biometric", "duration": "5m", "online": true },
+      { "number": 3, "title": "Approval & Download", "description": "Wait for approval and download Ayushman card", "duration": "1-2 days", "online": true }
+    ],
+    "estimatedTime": "1-2 Days",
+    "fees": "Free",
+    "processType": "Online + e-KYC",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["You can also visit a CSC center to get it done offline"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "udyam": {
+    "id": "udyam",
+    "name": "Udyam Registration",
+    "icon": "🏭",
+    "category": "Business",
+    "description": "MSME registration for small businesses and enterprises",
+    "applyLink": "https://udyamregistration.gov.in",
+    "requiredDocuments": ["Aadhaar", "PAN", "Bank Account Details"],
+    "steps": [
+      { "number": 1, "title": "Register Online", "description": "Visit Udyam portal and apply for new entrepreneur", "duration": "10m", "online": true },
+      { "number": 2, "title": "Aadhaar Verification", "description": "Input Aadhaar and verify with OTP", "duration": "2m", "online": true },
+      { "number": 3, "title": "Business Details", "description": "Enter PAN, investment, and turnover details", "duration": "10m", "online": true }
+    ],
+    "estimatedTime": "Instant",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Udyam registration is 100% free; beware of fake agencies charging fees"],
+    "warnings": ["Fake portals look identical to the official one; always check for .gov.in"],
+    "commonIssues": []
+  }
+}

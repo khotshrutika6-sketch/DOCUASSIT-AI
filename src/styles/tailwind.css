@@ -1,0 +1,17 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
+
+@theme {
+  --color-bg: #020617;
+  --color-surface: #0F172A;
+  --color-card: #0F172A;
+  --color-border: rgba(255,255,255,0.08);
+  --color-primary: #22C55E;
+  --color-primaryHover: #16A34A;
+  --color-accent: #4ADE80;
+  --color-textMain: #F9FAFB;
+  --color-textSecondary: #9CA3AF;
+  --color-textMuted: #6B7280;
+}
