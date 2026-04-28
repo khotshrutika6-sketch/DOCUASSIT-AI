@@ -30,18 +30,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
-  background-attachment: fixed;
+  background: radial-gradient(circle at 20% 30%, #0a2f3f, transparent),
+              radial-gradient(circle at 80% 70%, #001f2f, transparent),
+              #020617;
   color: #F9FAFB;
   font-family: 'Inter', sans-serif;
-  background-size: 200% 200%;
-  animation: bgPulse 15s ease infinite;
-}
-
-@keyframes bgPulse {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background-attachment: fixed;
 }
 
 .hero-glow {
@@ -62,34 +56,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @layer base {
+  * {
+    transition: all 0.25s ease;
+  }
+  
   /* Glassmorphism Classes */
   .glass {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: all 0.25s ease;
   }
   
   .glass-hover {
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(34, 197, 94, 0.3);
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 150, 0.15);
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 2rem;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease;
   }
   .glass-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 50px rgba(34, 197, 94, 0.1);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(0, 255, 150, 0.15);
     border-color: rgba(34, 197, 94, 0.2);
   }
 
@@ -135,7 +135,58 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.glow {
+  box-shadow: 0 0 30px rgba(0, 255, 150, 0.15);
+}
+
 /* Animations */
+.search-box {
+  transition: all 0.3s ease;
+}
+.search-box:hover {
+  transform: scale(1.02);
+}
+.search-box:focus-within {
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.4);
+}
+
+.mic-pulse {
+  animation: pulseMic 1.8s infinite;
+}
+@keyframes pulseMic {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.nav-tab {
+  position: relative;
+  background: transparent !important;
+  color: var(--color-text-secondary);
+}
+.nav-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00ff99;
+  transition: width 0.3s ease;
+}
+.nav-tab.active::after {
+  width: 100%;
+}
+.nav-tab.active {
+  color: #F9FAFB;
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+  box-shadow: none !important;
+}
+
+.btn-click:active {
+  transform: scale(0.95);
+}
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }

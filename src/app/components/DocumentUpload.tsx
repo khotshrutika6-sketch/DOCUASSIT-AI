@@ -25,78 +25,72 @@ export function DocumentUpload({ onFileSelect, selectedFile, isProcessing }: Doc
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <label
-        htmlFor="file-upload"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-        className={`group relative flex flex-col items-center justify-center w-full h-80 border-2 border-dashed rounded-[2.5rem] cursor-pointer transition-all duration-500 overflow-hidden ${
-          selectedFile 
-            ? 'border-primary bg-primary/5 shadow-[0_0_30px_rgba(34,197,94,0.2)]' 
-            : 'border-white/10 bg-white/5 hover:border-primary/50 hover:bg-white/[0.08] hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]'
-        } ${isProcessing ? 'opacity-50 cursor-wait' : ''}`}
-      >
-        {/* Decorative corner sparkles */}
-        <div className="absolute top-6 left-6 opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
-           <Sparkles className="w-5 h-5 text-accent" />
-        </div>
-        <div className="absolute bottom-6 right-6 opacity-20 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-700">
-           <Sparkles className="w-5 h-5 text-primary" />
-        </div>
+      <div className="mt-6 relative">
+        {/* glow */}
+        <div className="absolute inset-0 bg-green-400/10 blur-2xl rounded-2xl pointer-events-none"></div>
 
-        <div className="flex flex-col items-center justify-center pt-5 pb-6 px-10 text-center relative z-10">
-          <div className={`mb-6 p-6 rounded-3xl transition-all duration-500 scale-100 group-hover:scale-110 ${
-            selectedFile ? 'bg-primary/20 rotate-0' : 'bg-white/5 -rotate-3 group-hover:rotate-0'
-          }`}>
-            {selectedFile ? (
-              <FileText className="w-16 h-16 text-primary" />
-            ) : (
-              <Upload className="w-16 h-16 text-textSecondary" />
-            )}
-          </div>
-          
+        {/* main box */}
+        <label
+          htmlFor="file-upload"
+          onDrop={handleDrop}
+          onDragOver={(e) => e.preventDefault()}
+          className={`relative flex flex-col items-center justify-center bg-white/5 backdrop-blur-xl border border-dashed border-white/20 rounded-2xl p-10 text-center hover:border-green-400/40 transition-all duration-300 cursor-pointer block ${
+            isProcessing ? 'opacity-50 cursor-wait' : ''
+          }`}
+        >
           {selectedFile ? (
-            <div className="space-y-2">
-              <p className="text-xl font-bold text-textMain tracking-tight">{selectedFile.name}</p>
-              <div className="flex items-center justify-center gap-3">
-                <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-semibold uppercase tracking-wider">
+            <div className="space-y-4">
+              <div className="w-16 h-16 mx-auto bg-green-400/20 rounded-full flex items-center justify-center glow">
+                 <FileText className="w-8 h-8 text-green-400" />
+              </div>
+              <p className="text-xl font-bold text-white tracking-tight">{selectedFile.name}</p>
+              <div className="flex justify-center flex-wrap gap-2">
+                <span className="px-3 py-1 bg-green-400/20 text-green-400 rounded-full text-xs font-semibold uppercase tracking-wider">
                   {(selectedFile.size / 1024).toFixed(1)} KB
                 </span>
-                <span className="flex items-center gap-1.5 px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-semibold uppercase tracking-wider">
-                   <ImageIcon className="w-3 h-3" /> Ready
+                <span className="flex items-center gap-1.5 px-3 py-1 bg-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider">
+                   Ready
                 </span>
               </div>
             </div>
           ) : (
-            <div className="space-y-4">
-              <div>
-                <p className="text-xl font-bold text-textMain tracking-tight mb-2">
-                   Scan or Upload Document
-                </p>
-                <p className="text-textSecondary text-sm max-w-xs mx-auto leading-relaxed">
-                  Drop your file here or click to browse. Our AI agents support Aadhaar, PAN, Passports & more.
-                </p>
-              </div>
-              <div className="flex justify-center gap-6 pt-2">
-                <span className="text-[10px] uppercase font-black tracking-widest text-textMuted">PNG</span>
-                <span className="text-[10px] uppercase font-black tracking-widest text-textMuted">JPG</span>
-                <span className="text-[10px] uppercase font-black tracking-widest text-textMuted">WEBP</span>
-              </div>
+            <div className="py-2">
+              <div className="text-4xl mb-4">⬆️</div>
+              <p className="text-xl font-semibold text-white">Upload or Scan Document</p>
+              <p className="text-gray-400 text-sm mt-2">
+                Drag & drop or click to upload
+              </p>
+              <p className="text-xs text-gray-500 mt-6">
+                Supports PDF, JPG, PNG
+              </p>
             </div>
           )}
-        </div>
 
-        {/* Dynamic Glow Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+          <input
+            id="file-upload"
+            type="file"
+            className="hidden"
+            accept="image/*,.pdf"
+            onChange={handleFileInput}
+            disabled={isProcessing}
+          />
+        </label>
+      </div>
 
-        <input
-          id="file-upload"
-          type="file"
-          className="hidden"
-          accept="image/*"
-          onChange={handleFileInput}
-          disabled={isProcessing}
-        />
-      </label>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          "AI scans document",
+          "Fraud detection runs",
+          "Authenticity score generated"
+        ].map((step, i) => (
+          <div key={i} className="bg-white/5 border border-white/10 p-4 rounded-xl text-sm text-gray-300 flex items-center gap-3 transition hover:bg-white/10">
+             <span className="flex items-center justify-center min-w-6 w-6 h-6 rounded bg-green-400/20 text-green-400 font-bold text-xs ring-1 ring-green-400/30">
+               {i + 1}
+             </span>
+             <span>{step}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

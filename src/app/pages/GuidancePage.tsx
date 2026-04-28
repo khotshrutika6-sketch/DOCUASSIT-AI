@@ -77,13 +77,13 @@ export function GuidancePage({ onRequireAuth }: GuidancePageProps) {
   };
 
   return (
-    <div className="w-full">
+    <motion.div variants={containerLoaderVariant} initial="hidden" animate="show" className="w-full">
       {/* Search Header Area */}
-      <div className="mb-20 border-b border-white/5 pb-16">
+      <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }} className="mb-20 border-b border-white/5 pb-16">
         <DocumentSearch onSearch={handleSearch} isLoading={isSearching} />
-      </div>
+      </motion.div>
 
-      <div className="space-y-20">
+      <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }} className="space-y-20">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-40">
             <div className="relative">
@@ -173,7 +173,7 @@ export function GuidancePage({ onRequireAuth }: GuidancePageProps) {
             ))}
           </motion.div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

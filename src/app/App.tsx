@@ -43,18 +43,13 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-bg/40 backdrop-blur-3xl border-b border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
           
-          <div className="flex items-center gap-4 group cursor-pointer" onClick={() => setActiveTab('guidance')}>
-            <motion.div 
-              whileHover={{ scale: 1.1, rotate: 5 }} 
-              className="relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-2xl shadow-[0_0_30px_rgba(34,197,94,0.3)]"
-            >
-              <Bot className="w-7 h-7 text-bg" />
-            </motion.div>
-            <div>
-              <h1 className="font-extrabold text-2xl tracking-tighter leading-none text-white">
-                DocAssist <span className="text-gradient-emerald">AI</span>
-              </h1>
-            </div>
+          <div className="flex items-center group cursor-pointer" onClick={() => setActiveTab('guidance')}>
+            <motion.img 
+              whileHover={{ scale: 1.05 }} 
+              src="/logo.png" 
+              alt="DocAssist AI Logo"
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all"
+            />
           </div>
 
           <nav className="hidden lg:flex items-center gap-2 bg-white/5 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
@@ -62,10 +57,10 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab('guidance')}
-              className={`px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
+              className={`nav-tab px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
                 activeTab === 'guidance' 
-                  ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-[0_5px_15px_rgba(34,197,94,0.4)]' 
-                  : 'text-textSecondary hover:text-white'
+                  ? 'active' 
+                  : ''
               }`}
             >
               Protocol
@@ -74,10 +69,10 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab('verify')}
-              className={`px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
+              className={`nav-tab px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
                 activeTab === 'verify' 
-                  ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-[0_5px_15px_rgba(34,197,94,0.4)]' 
-                  : 'text-textSecondary hover:text-white'
+                  ? 'active' 
+                  : ''
               }`}
             >
               Security
@@ -141,9 +136,12 @@ export default function App() {
         <footer className="mt-32 border-t border-border pt-16 pb-8">
            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
               <div className="col-span-1 md:col-span-2">
-                 <div className="flex items-center gap-3 mb-6 opacity-80">
-                   <Bot className="w-6 h-6 text-primary" />
-                   <span className="font-bold text-xl tracking-tight text-textMain">DocAssist <span className="text-accent">AI</span></span>
+                 <div className="flex items-center mb-6 opacity-80">
+                   <img 
+                     src="/logo.png" 
+                     alt="DocAssist AI Logo"
+                     className="h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(34,197,94,0.3)] transition-opacity hover:opacity-100"
+                   />
                  </div>
                  <p className="text-textSecondary text-sm leading-relaxed max-w-sm mb-6">
                    Empowering citizens with AI-driven document guidance. Fast, reliable, and accessible process navigation without the usual bureaucracy.

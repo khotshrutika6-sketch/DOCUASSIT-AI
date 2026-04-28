@@ -5,6 +5,8 @@ import { analyzeText } from "../services/textAnalysis.js";
 import { checkMetadata } from "../services/metadataCheck.js";
 import { calculateScore } from "../services/scoring.js";
 import { explainResult } from "../services/aiExplain.js";
+import { detectAIContent } from "../services/aiDetection.js";
+import { detectForgery } from "../services/imageForensics.js";
 
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
@@ -23,17 +25,25 @@ router.post("/", upload.single("file"), async (req, res) => {
     
     // 2. Analyze Clues
     const textSignals = analyzeText(text);
+
+    // 2.5 AI Detection
+    const aiSignals = await detectAIContent(text);
     
     // 3. Check Metadata
     const metadataSignals = await checkMetadata(filePath);
 
+    // 3.5 Image Forensics
+    const forensicsSignals = await detectForgery(filePath);
+
     // 4. Calculate Risk Identity Score
     const result = calculateScore({
       textSignals,
-      metadataSignals
+      metadataSignals,
+      aiSignals,
+      forensicsSignals
     });
 
-    // 5. Generate AI Strategic Explanation
+    // 5. Generate AI Strategic Explanation (Wait, we can just use the score reasoning now or combine them. We'll still keep the AI explain but pass the new result.)
     const explanation = await explainResult(result, text);
 
     res.json({ 

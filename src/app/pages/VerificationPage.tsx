@@ -49,65 +49,53 @@ export function VerificationPage() {
     <div className="w-full relative">
        <div className="hero-glow" style={{ top: '-20%', right: '10%', opacity: 0.5 }} />
 
-      <div className="text-center mb-20">
+      <div className="text-center mb-16">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-5 py-2 rounded-full mb-8 text-[11px] font-black uppercase tracking-widest text-primary"
+          className="inline-flex items-center gap-2 bg-green-400/10 border border-green-400/20 px-3 py-1 rounded-full text-xs text-green-400 mb-6"
         >
-          <ShieldCheck className="w-4 h-4" />
-          <span>AI-Assisted Authenticity Scanner</span>
+          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          AI Verification Active
         </motion.div>
         
-        <motion.h2 
+        <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-black text-6xl md:text-8xl text-white mb-8 tracking-tighter leading-none"
+          className="text-5xl md:text-7xl font-bold leading-tight text-white mb-6"
         >
-          Smart Protocol <br />
-          <span className="text-gradient-emerald">Verification.</span>
-        </motion.h2>
+          Smart Security <br />
+          <span className="text-green-400">Verification.</span>
+        </motion.h1>
+        
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-textSecondary max-w-2xl mx-auto text-xl font-medium opacity-70 leading-relaxed"
+          className="text-gray-400 max-w-xl mx-auto text-lg mt-4"
         >
-          Deploy advanced AI agents to authenticate identity artifacts and extract verified data points instantly.
+          AI-powered document authentication with real-time fraud detection.
         </motion.p>
       </div>
 
       {/* Document Type Selection */}
-      <div className="mb-20">
-        <div className="flex items-center justify-center gap-3 mb-10 opacity-50">
-           <Zap className="w-4 h-4 text-primary" />
-           <label className="font-black text-textMain uppercase tracking-[0.3em] text-[10px]">Select Protocol</label>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-5xl mx-auto px-4">
+      <div className="mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto px-4">
           {documentTypes.map((type, i) => (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 * i }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 * i }}
               key={type.id}
               onClick={() => setSelectedType(type.id)}
-              className={`p-8 rounded-[2.5rem] border transition-all duration-300 backdrop-blur-3xl flex flex-col items-center group relative overflow-hidden ${
-                selectedType === type.id
-                  ? 'border-primary bg-primary/20 text-white shadow-[0_0_40px_rgba(34,197,94,0.2)]'
-                  : 'border-white/10 bg-white/5 text-textSecondary hover:text-white hover:border-primary/50'
+              className={`bg-white/5 backdrop-blur-xl border rounded-xl p-4 text-center cursor-pointer transition-all hover:scale-105 hover:border-green-400/40 hover:bg-green-400/10 ${
+                selectedType === type.id ? "border-green-400 bg-green-400/10 shadow-[0_0_20px_rgba(34,197,94,0.3)]" : "border-white/10"
               }`}
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">{type.icon}</div>
-              <div className="text-[10px] font-black uppercase tracking-widest">{type.name}</div>
-              
-              {selectedType === type.id && (
-                <motion.div layoutId="selection-glow" className="absolute inset-0 bg-primary/10 -z-10 blur-xl" />
-              )}
-            </motion.button>
+              <div className="text-3xl mb-3">{type.icon}</div>
+              <p className="text-sm text-gray-300 font-medium">{type.name}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -121,9 +109,27 @@ export function VerificationPage() {
         />
       </div>
 
-      {/* Verify Button */}
-      {selectedFile && (
-        <div className="text-center mb-20">
+      {/* Verify Button & Sample Result */}
+      <div className="mt-12 text-center mb-20 max-w-2xl mx-auto">
+        {!results && (
+          <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-xl transition-all">
+            <p className="text-sm text-gray-400 mb-2">Sample Result Analysis</p>
+            <div className="flex items-center justify-between">
+              <p className="text-lg font-semibold text-white">Authenticity Score</p>
+              <span className="text-green-400 text-2xl font-bold">92%</span>
+            </div>
+            <div className="w-full h-2 bg-white/10 rounded mt-4 overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "92%" }}
+                transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                className="h-full bg-green-400 rounded glow"
+              />
+            </div>
+          </div>
+        )}
+
+        {selectedFile && (
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -131,41 +137,42 @@ export function VerificationPage() {
             whileTap={{ scale: 0.95 }}
             onClick={handleVerify}
             disabled={isProcessing}
-            className="btn-premium px-12 py-5 text-lg"
+            className="btn-premium px-12 py-4 text-lg w-full max-w-md mx-auto"
           >
             {isProcessing ? (
               <>
                 <Loader2 className="w-6 h-6 animate-spin" />
-                <span>Processing Protocol...</span>
+                <span>Running Fraud Check...</span>
               </>
             ) : (
               <>
-                <FileCheck className="w-6 h-6" />
-                <span>Authenticate Document</span>
+                <ShieldCheck className="w-6 h-6" />
+                <span>Verify Authenticity</span>
               </>
             )}
           </motion.button>
-          {isProcessing && (
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-[10px] uppercase tracking-[0.4em] font-black text-primary mt-10 animate-pulse"
-            >
-              AI Agents analyzing cryptographic signatures
-            </motion.p>
-          )}
-        </div>
-      )}
-
+        )}
+        {isProcessing && (
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-[10px] uppercase tracking-[0.4em] font-black text-green-400 mt-10 animate-pulse"
+          >
+            AI Agents analyzing cryptographic signatures
+          </motion.p>
+        )}
+      </div>
       {/* Results */}
       {results && (
         <div className="animate-in fade-in slide-in-from-bottom-10 duration-1000">
           <VerificationResults
             isValid={results.isValid}
-            score={results.score}
+            score={results.authenticityScore}
             status={results.status}
             issues={results.issues}
-            explanation={results.explanation}
+            explanation={results.reasoning || results.explanation}
+            aiProbability={results.aiProbability}
+            forgeryRisk={results.forgeryRisk}
           />
         </div>
       )}
