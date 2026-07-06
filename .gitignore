@@ -23,3 +23,13 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Firebase Cache & Local Config
+.firebase/
+
+# User Uploaded Documents
+backend/uploads/
+
+# Python Cache (for microservices)
+**/__pycache__/
+**/*.pyc

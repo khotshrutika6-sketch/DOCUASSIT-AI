@@ -3,38 +3,63 @@ import { Bot, ChevronRight, FileText, Search, User as UserIcon } from 'lucide-re
 import { motion, AnimatePresence } from 'framer-motion';
 import { GuidancePage } from './pages/GuidancePage';
 import { VerificationPage } from './pages/VerificationPage';
-
-import { HowItWorks } from './components/HowItWorks';
-import { AuthModal } from './components/AuthModal';
+import { LandingPage } from './pages/LandingPage';
+import { AuthPage } from './pages/AuthPage';
 import { authService, User } from './services/authService';
 
 export default function App() {
+  const [view, setView] = useState<'landing' | 'auth' | 'dashboard'>('landing');
   const [activeTab, setActiveTab] = useState<'guidance' | 'verify'>('guidance');
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const currentUser = authService.getCurrentUser();
-    if (currentUser) setUser(currentUser);
+    if (currentUser) {
+      setUser(currentUser);
+      setView('dashboard');
+    } else {
+      setView('landing');
+    }
   }, []);
 
   const handleLogout = () => {
     authService.logout();
     setUser(null);
+    setView('landing');
   };
 
   const requireAuth = (callback: () => void) => {
     if (!user) {
-      setIsAuthModalOpen(true);
+      setView('auth');
       return;
     }
     callback();
   };
 
+  const handleNavClick = (tab: 'guidance' | 'verify') => {
+    if (!user) {
+      setView('auth');
+    } else {
+      setView('dashboard');
+      setActiveTab(tab);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-bg text-textMain selection:bg-primary/30 overflow-x-hidden font-sans">
-      {/* Background Gradients */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      {/* Dynamic Cinematic Video Background Layer */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          className="w-full h-full object-cover opacity-35"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-plexus-background-loop-33678-large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#04080e]/95 via-[#04080e]/70 to-[#04080e] mix-blend-multiply" />
         <div className="absolute top-[0%] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
         <div className="absolute bottom-[0%] right-[10%] w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px]" />
       </div>
@@ -43,7 +68,14 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-bg/40 backdrop-blur-3xl border-b border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
           
-          <div className="flex items-center group cursor-pointer" onClick={() => setActiveTab('guidance')}>
+          <div className="flex items-center group cursor-pointer" onClick={() => {
+            if (user) {
+              setView('dashboard');
+              setActiveTab('guidance');
+            } else {
+              setView('landing');
+            }
+          }}>
             <motion.img 
               whileHover={{ scale: 1.05 }} 
               src="/logo.png" 
@@ -56,31 +88,31 @@ export default function App() {
              <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab('guidance')}
-              className={`nav-tab px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
-                activeTab === 'guidance' 
+              onClick={() => handleNavClick('guidance')}
+              className={`nav-tab px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                view === 'dashboard' && activeTab === 'guidance' 
                   ? 'active' 
                   : ''
               }`}
             >
-              Protocol
+              Access Documents
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab('verify')}
-              className={`nav-tab px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 ${
-                activeTab === 'verify' 
+              onClick={() => handleNavClick('verify')}
+              className={`nav-tab px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                view === 'dashboard' && activeTab === 'verify' 
                   ? 'active' 
                   : ''
               }`}
             >
-              Security
+              Scan Document
             </motion.button>
           </nav>
 
           <div className="flex items-center gap-4">
-            <button onClick={() => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})} className="hidden md:flex text-sm font-black text-textSecondary hover:text-white transition-colors tracking-[0.2em] uppercase">
+            <button onClick={() => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})} className="hidden md:flex text-xs font-black text-textSecondary hover:text-white transition-colors tracking-[0.2em] uppercase">
               Support
             </button>
             <div className="h-6 w-px bg-white/10 mx-2 hidden md:block"></div>
@@ -100,8 +132,8 @@ export default function App() {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-sm font-black text-white shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all uppercase tracking-widest"
+                onClick={() => setView('auth')}
+                className="flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-xs font-black text-white shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all uppercase tracking-widest"
               >
                 <UserIcon className="w-4 h-4" /> <span>Login</span>
               </motion.button>
@@ -111,22 +143,40 @@ export default function App() {
       </header>
 
       {/* Main App Container */}
-      <main className={`relative z-10 pt-28 pb-0 max-w-[1400px] mx-auto px-6 min-h-screen flex flex-col transition-all duration-500 ${!user ? 'blur-md pointer-events-none opacity-40 select-none' : ''}`}>
+      <main className="relative z-10 pt-28 pb-0 max-w-[1400px] mx-auto px-6 min-h-screen flex flex-col transition-all duration-500">
         
         {/* Dynamic Page Router */}
         <div className="flex-1">
            <AnimatePresence mode="wait">
              <motion.div
-               key={activeTab}
+               key={view === 'dashboard' ? `${view}_${activeTab}` : view}
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                exit={{ opacity: 0, y: -20 }}
                transition={{ duration: 0.3 }}
              >
-               {activeTab === 'guidance' ? (
-                 <GuidancePage onRequireAuth={requireAuth} />
-               ) : (
-                 <VerificationPage />
+               {view === 'landing' && (
+                 <LandingPage 
+                   onGetStarted={() => setView('auth')} 
+                   onLogin={() => setView('auth')} 
+                 />
+               )}
+               {view === 'auth' && (
+                 <AuthPage 
+                   onSuccess={(userData) => {
+                     setUser(userData);
+                     setView('dashboard');
+                     setActiveTab('guidance');
+                   }} 
+                   onBack={() => setView('landing')} 
+                 />
+               )}
+               {view === 'dashboard' && user && (
+                 activeTab === 'guidance' ? (
+                   <GuidancePage onRequireAuth={requireAuth} user={user} />
+                 ) : (
+                   <VerificationPage onRequireAuth={requireAuth} user={user} />
+                 )
                )}
              </motion.div>
            </AnimatePresence>
@@ -151,9 +201,9 @@ export default function App() {
               <div>
                  <h4 className="font-bold text-textMain mb-6 uppercase tracking-widest text-xs">Platform</h4>
                  <ul className="space-y-4 text-sm text-textMuted">
-                    <li><button onClick={() => setActiveTab('guidance')} className="hover:text-primary transition">Document Search</button></li>
+                    <li><button onClick={() => handleNavClick('guidance')} className="hover:text-primary transition">Document Search</button></li>
                     <li><button className="hover:text-primary transition">AI Chatbot</button></li>
-                    <li><button onClick={() => setActiveTab('verify')} className="hover:text-primary transition">Fraud Verification</button></li>
+                    <li><button onClick={() => handleNavClick('verify')} className="hover:text-primary transition">Fraud Verification</button></li>
                  </ul>
               </div>
 
@@ -177,13 +227,6 @@ export default function App() {
         </footer>
       </main>
 
-
-      <AuthModal 
-        isOpen={!user || isAuthModalOpen} 
-        closable={!!user}
-        onClose={() => setIsAuthModalOpen(false)} 
-        onSuccess={(userData) => { setUser(userData); setIsAuthModalOpen(false); }}
-      />
       <CursorGlow />
     </div>
   );

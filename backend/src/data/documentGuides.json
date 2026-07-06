@@ -1,10 +1,10 @@
 {
   "passport": {
     "id": "passport",
-    "name": "Passport",
+    "name": "Passport Seva",
     "icon": "🛂",
     "category": "Identity",
-    "description": "Official travel document issued by Government of India",
+    "description": "Official travel document and identity proof issued by Government of India",
     "applyLink": "https://www.passportindia.gov.in",
     "requiredDocuments": [
       "Aadhaar Card",
@@ -14,60 +14,397 @@
       "Photographs"
     ],
     "steps": [
-      { "number": 1, "title": "Register", "description": "Create an account on the official portal", "duration": "5m", "online": true },
-      { "number": 2, "title": "Fill Form", "description": "Complete the online application", "duration": "30m", "online": true },
-      { "number": 3, "title": "Payment", "description": "Pay the application fee", "duration": "2m", "online": true },
-      { "number": 4, "title": "Appointment", "description": "Visit the Passport Seva Kendra", "duration": "1-2h", "online": false }
+      { "number": 1, "title": "Register", "description": "Create an account on the official Passport Seva portal", "duration": "5m", "online": true },
+      { "number": 2, "title": "Fill Form", "description": "Complete the online application Form 1", "duration": "30m", "online": true },
+      { "number": 3, "title": "Payment", "description": "Pay the application fee and schedule appointment", "duration": "5m", "online": true },
+      { "number": 4, "title": "Appointment", "description": "Visit the selected Passport Seva Kendra (PSK) for biometric capture and verification", "duration": "1-2h", "online": false }
     ],
     "estimatedTime": "15-30 days",
     "fees": "₹1,500",
     "processType": "Online + Office Visit",
     "officeVisitRequired": true,
     "officeVisitTiming": "After online form submission",
-    "tips": ["Carry original documents", "Reach early"],
-    "warnings": ["Avoid middle-men"],
-    "commonIssues": []
+    "tips": ["Carry all original documents along with 2 photocopies", "Reach 15 minutes prior to your slot time"],
+    "warnings": ["Do not trust middle-men or unofficial websites charging extra fees"],
+    "commonIssues": [
+      { "issue": "Spelling mismatch on documents", "solution": "Get a gazetted officer affidavit or update Aadhaar details first before scheduling." }
+    ]
   },
   "aadhar": {
     "id": "aadhar",
-    "name": "Aadhaar Card",
+    "name": "UIDAI (MyAadhaar)",
     "icon": "🆔",
     "category": "Identity",
-    "description": "12-digit unique identity number issued by UIDAI",
-    "applyLink": "https://uidai.gov.in",
-    "requiredDocuments": ["Proof of Identity", "Proof of Address", "Date of Birth Proof"],
+    "description": "12-digit unique identity number and profile database issued by UIDAI",
+    "applyLink": "https://myaadhaar.uidai.gov.in",
+    "requiredDocuments": ["Proof of Identity (e.g. Passport/PAN)", "Proof of Address", "Date of Birth Proof"],
     "steps": [
-      { "number": 1, "title": "Locate Center", "description": "Find your nearest Aadhaar center", "duration": "2m", "online": true },
-      { "number": 2, "title": "Visit Center", "description": "Enroll with biometrics", "duration": "1h", "online": false },
-      { "number": 3, "title": "Wait", "description": "Processing usually takes a few weeks", "duration": "90 days", "online": false }
+      { "number": 1, "title": "Locate Center", "description": "Find nearest permanent Aadhaar Enrollment Centre", "duration": "2m", "online": true },
+      { "number": 2, "title": "Visit Center", "description": "Submit form, get fingerprinted, scan iris, and take photo", "duration": "1h", "online": false },
+      { "number": 3, "title": "Verification", "description": "Wait for backend verification and card dispatch", "duration": "90 days", "online": false }
     ],
     "estimatedTime": "90 days",
-    "fees": "Free",
+    "fees": "Free for first enrollment, ₹50-100 for biometric updates",
     "processType": "In-Person Enrollment",
     "officeVisitRequired": true,
     "officeVisitTiming": "Once for biometric capture",
-    "tips": ["Ensure mobile number is linked"],
-    "warnings": [],
+    "tips": ["Ensure your mobile number is correctly linked during registration"],
+    "warnings": ["Never share your Aadhaar OTP with anyone"],
+    "commonIssues": [
+      { "issue": "Aadhaar status checking fails", "solution": "Use the EID (Enrollment ID) printed on the slip to trace progress on the portal." }
+    ]
+  },
+  "voter": {
+    "id": "voter",
+    "name": "National Voters' Service Portal (NVSP)",
+    "icon": "🗳️",
+    "category": "Identity",
+    "description": "Register to vote, change addresses, or download digital voter ID cards (e-EPIC)",
+    "applyLink": "https://voters.eci.gov.in",
+    "requiredDocuments": ["Identity Proof", "Address Proof", "Passport Size Photo"],
+    "steps": [
+      { "number": 1, "title": "Register Online", "description": "Fill out Form 6 on NVSP portal for new voter registration", "duration": "15m", "online": true },
+      { "number": 2, "title": "Field Verification", "description": "Booth Level Officer (BLO) will visit your house for physical check", "duration": "15 days", "online": false },
+      { "number": 3, "title": "EPIC Card Download", "description": "Download e-EPIC from the portal once approved", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "30 days",
+    "fees": "Free",
+    "processType": "100% Online Application",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Verify if your name is in the electoral roll using search function on the site"],
+    "warnings": ["Providing false information is punishable under Representation of the People Act"],
+    "commonIssues": [
+      { "issue": "Card not delivered physically", "solution": "Download the e-EPIC PDF online which is equally valid." }
+    ]
+  },
+  "services_india": {
+    "id": "services_india",
+    "name": "National Government Services Portal",
+    "icon": "🏛️",
+    "category": "Identity",
+    "description": "Massive centralized directory linking to over 13,000 state and central government services",
+    "applyLink": "https://services.india.gov.in",
+    "requiredDocuments": ["Varies by service"],
+    "steps": [
+      { "number": 1, "title": "Search Service", "description": "Enter search term or filter by state/ministry", "duration": "2m", "online": true },
+      { "number": 2, "title": "Redirect", "description": "Get routed to the official departmental webpage", "duration": "1m", "online": true }
+    ],
+    "estimatedTime": "Instant redirection",
+    "fees": "Free directory access",
+    "processType": "Redirect / Central Directory",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Use search tags for narrow results"],
+    "warnings": ["Make sure the URL redirects to a .gov.in domain"],
     "commonIssues": []
   },
-  "pan": {
-    "id": "pan",
-    "name": "PAN Card",
-    "icon": "💳",
-    "category": "Finance",
-    "description": "Permanent Account Number for tax purposes",
-    "applyLink": "https://www.onlineservices.nsdl.com",
-    "requiredDocuments": ["Aadhaar", "Identity Proof", "Address Proof"],
+  "digilocker": {
+    "id": "digilocker",
+    "name": "DigiLocker",
+    "icon": "📂",
+    "category": "Digital Wallets",
+    "description": "Official cloud-based document wallet to fetch, store, and verify government-issued cards",
+    "applyLink": "https://www.digilocker.gov.in",
+    "requiredDocuments": ["Aadhaar Number", "Aadhaar-linked Mobile Number"],
     "steps": [
-      { "number": 1, "title": "Apply Online", "description": "Fill Form 49A/49AA", "duration": "15m", "online": true },
-      { "number": 2, "title": "Verify", "description": "Digital or Physical verification", "duration": "5m", "online": true }
+      { "number": 1, "title": "Sign Up", "description": "Register with mobile and enter your Aadhaar details", "duration": "2m", "online": true },
+      { "number": 2, "title": "Fetch Documents", "description": "Select issuer (e.g. CBSE, Income Tax) and fetch certificates", "duration": "3m", "online": true }
     ],
-    "estimatedTime": "15 days",
-    "fees": "₹107",
+    "estimatedTime": "Instant setup",
+    "fees": "Free",
     "processType": "100% Online",
     "officeVisitRequired": false,
     "officeVisitTiming": "N/A",
-    "tips": ["Use e-KYC for faster processing"],
+    "tips": ["DigiLocker documents are legally equivalent to originals under IT Act 2000"],
+    "warnings": [],
+    "commonIssues": [
+      { "issue": "Name mismatch error when fetching", "solution": "Your name in DigiLocker must match the name on the document exactly. Update details first." }
+    ]
+  },
+  "umang": {
+    "id": "umang",
+    "name": "UMANG Portal",
+    "icon": "📱",
+    "category": "Digital Wallets",
+    "description": "Unified Mobile Application for New-age Governance to access multiple state & central services",
+    "applyLink": "https://web.umang.gov.in",
+    "requiredDocuments": ["Mobile Number", "Aadhaar Card (Optional)"],
+    "steps": [
+      { "number": 1, "title": "Register", "description": "Create account using mobile verification", "duration": "2m", "online": true },
+      { "number": 2, "title": "Link Aadhaar", "description": "Integrate Aadhaar for full service coverage", "duration": "2m", "online": true },
+      { "number": 3, "title": "Access Services", "description": "Search PF balance, file pension details, check scholarships", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "Instant setup",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Excellent for checking EPF status on the go"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "it_efiling": {
+    "id": "it_efiling",
+    "name": "Income Tax e-Filing Portal",
+    "icon": "💸",
+    "category": "Finance",
+    "description": "Generate instant e-PAN, file Income Tax Returns (ITR), and verify PAN card details",
+    "applyLink": "https://eportal.incometax.gov.in",
+    "requiredDocuments": ["PAN Card", "Aadhaar Card", "Bank Account Details", "Form 16"],
+    "steps": [
+      { "number": 1, "title": "Register/Login", "description": "Login using your PAN as username", "duration": "5m", "online": true },
+      { "number": 2, "title": "Prepare Return", "description": "Fill out ITR parameters or download pre-filled data", "duration": "30m", "online": true },
+      { "number": 3, "title": "e-Verify", "description": "Confirm returns using Aadhaar OTP authentication", "duration": "2m", "online": true }
+    ],
+    "estimatedTime": "Instant submission, 2-6 weeks processing",
+    "fees": "Free directory access (taxes extra)",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Use Aadhaar e-verification for instant receipt processing without mailing physical papers"],
+    "warnings": ["Always file returns before the standard deadline to avoid high late fees"],
+    "commonIssues": []
+  },
+  "gst": {
+    "id": "gst",
+    "name": "GST Portal",
+    "icon": "🏬",
+    "category": "Finance",
+    "description": "Tax registry and compliance database for Goods and Services Tax in India",
+    "applyLink": "https://www.gst.gov.in",
+    "requiredDocuments": ["PAN Card", "Proof of Business Registration", "Address Proof of Business", "Bank Statement"],
+    "steps": [
+      { "number": 1, "title": "Apply for TRN", "description": "Fill out Part-A of registration to get Temporary Reference Number", "duration": "10m", "online": true },
+      { "number": 2, "title": "Complete Form", "description": "Submit business information and upload documents in Part-B", "duration": "30m", "online": true },
+      { "number": 3, "title": "Verification", "description": "Wait for GST officer approval and registration certificate generation", "duration": "3-7 days", "online": true }
+    ],
+    "estimatedTime": "7 days",
+    "fees": "Free registration",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Keep scan copies of bank statements and rent agreements ready before filing"],
+    "warnings": ["Failing to file quarterly returns can result in suspension of registration"],
+    "commonIssues": []
+  },
+  "nsdl_tin": {
+    "id": "nsdl_tin",
+    "name": "NSDL / UTIITSL Tin Portal",
+    "icon": "🏢",
+    "category": "Finance",
+    "description": "Official platforms to request a new physical PAN Card or issue database corrections",
+    "applyLink": "https://www.tin-nsdl.com",
+    "requiredDocuments": ["Aadhaar", "Identity Proof", "Address Proof", "Signature/Photo uploads"],
+    "steps": [
+      { "number": 1, "title": "Select Form", "description": "Select Form 49A for citizens or changes/corrections form", "duration": "10m", "online": true },
+      { "number": 2, "title": "Payment", "description": "Pay card processing fees", "duration": "2m", "online": true },
+      { "number": 3, "title": "Upload Docs", "description": "Complete e-Sign using Aadhaar OTP, or post documents to NSDL office", "duration": "10m", "online": true }
+    ],
+    "estimatedTime": "15 days",
+    "fees": "₹107 (within India), ₹1017 (abroad)",
+    "processType": "Online or Postal Submission",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Use Aadhaar e-KYC option for card processing without mailing documents"],
+    "warnings": ["Filing duplicate PAN card applications is illegal"],
+    "commonIssues": []
+  },
+  "parivahan": {
+    "id": "parivahan",
+    "name": "Parivahan Sewa",
+    "icon": "🚗",
+    "category": "Transport",
+    "description": "Comprehensive portal for vehicle registration (RC), driving license (DL), tax payment, and challans",
+    "applyLink": "https://parivahan.gov.in",
+    "requiredDocuments": ["Aadhaar Card", "Age Proof", "Address Proof", "Vehicle Details"],
+    "steps": [
+      { "number": 1, "title": "Select Service", "description": "Choose vehicle registration or licensing service page", "duration": "3m", "online": true },
+      { "number": 2, "title": "Enter Details", "description": "Input vehicle number, frame number, or driving license records", "duration": "10m", "online": true },
+      { "number": 3, "title": "Submit & Pay", "description": "Pay challan, registration fees, or tax online", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "Immediate for records/tax, varies for license",
+    "fees": "Varies by state and service category",
+    "processType": "Online + State RTO Visit (for physical tests)",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "For vehicle inspection or driving tests",
+    "tips": ["Always check for pending traffic challans periodically"],
+    "warnings": ["Official site ends with .gov.in. Be cautious of duplicates."],
+    "commonIssues": [
+      { "issue": "Challan paid but still showing active", "solution": "Check payment history tab on portal and trigger transaction sync." }
+    ]
+  },
+  "nad": {
+    "id": "nad",
+    "name": "National Academic Depository (NAD)",
+    "icon": "🎓",
+    "category": "Utilities",
+    "description": "Official online storage for academic awards, degrees, certificates, and college transcripts",
+    "applyLink": "https://nad.gov.in",
+    "requiredDocuments": ["Student Aadhaar ID", "College enrollment details"],
+    "steps": [
+      { "number": 1, "title": "Register", "description": "Create user account linking Aadhaar and academic history", "duration": "5m", "online": true },
+      { "number": 2, "title": "Fetch Records", "description": "Select university or board and enter roll number to pull degrees", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "Instant fetch",
+    "fees": "Free",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Use NAD to quickly share verified degree copies with foreign universities or job portals"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "affidavit_builder": {
+    "id": "affidavit_builder",
+    "name": "Online Agreement / Affidavit Builders",
+    "icon": "📜",
+    "category": "Utilities",
+    "description": "Draft customized agreements, affidavits, lease deeds, and rental documents",
+    "applyLink": "https://legaldesk.com",
+    "requiredDocuments": ["Names of parties", "Address records", "Drafting inputs"],
+    "steps": [
+      { "number": 1, "title": "Select Template", "description": "Select Rent Agreement, General Affidavit, or Power of Attorney", "duration": "2m", "online": true },
+      { "number": 2, "title": "Fill Fields", "description": "Input name, rent amounts, dates, and covenants", "duration": "5m", "online": true },
+      { "number": 3, "title": "Print/Stamp", "description": "Get printed on Stamp Paper or download template draft", "duration": "5m", "online": true }
+    ],
+    "estimatedTime": "Instant template download",
+    "fees": "Free template (Stamp duty extra if printed)",
+    "processType": "Online Form Fill",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Always check template with a notary or advocate before official signature"],
+    "warnings": ["Affidavits must be sworn before a notary or oath commissioner to be valid in court"],
+    "commonIssues": []
+  },
+  "resume_builder": {
+    "id": "resume_builder",
+    "name": "Resume/CV Builders",
+    "icon": "📄",
+    "category": "Utilities",
+    "description": "Build premium, professional, and ATS-friendly CV designs for job applications",
+    "applyLink": "https://novoresume.com",
+    "requiredDocuments": ["Education details", "Work experience", "Projects"],
+    "steps": [
+      { "number": 1, "title": "Select Design", "description": "Select template matching industry standards", "duration": "2m", "online": true },
+      { "number": 2, "title": "Fill Sections", "description": "Add career details, qualifications, and contacts", "duration": "20m", "online": true },
+      { "number": 3, "title": "Download", "description": "Export output as a clean PDF", "duration": "1m", "online": true }
+    ],
+    "estimatedTime": "Instant",
+    "fees": "Free templates, premium options available",
+    "processType": "100% Online",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Keep your resumes concise — 1 page is usually preferred"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "state_mh": {
+    "id": "state_mh",
+    "name": "Aaple Sarkar (Maharashtra)",
+    "icon": "🏢",
+    "category": "State Services",
+    "description": "Official citizen service portal for the Government of Maharashtra",
+    "applyLink": "https://aaplesarkar.mahaonline.gov.in",
+    "requiredDocuments": ["Aadhaar Card", "Income proof", "Address proof", "Self-declaration form"],
+    "steps": [
+      { "number": 1, "title": "Register Profile", "description": "Create a Citizen login account using UID verification", "duration": "10m", "online": true },
+      { "number": 2, "title": "Select Certificate", "description": "Select Domicile, Caste, or Income certificate application", "duration": "10m", "online": true },
+      { "number": 3, "title": "Upload Docs", "description": "Upload scan records and pay service fees online", "duration": "10m", "online": true }
+    ],
+    "estimatedTime": "15-21 days",
+    "fees": "₹20 - ₹50 processing fee",
+    "processType": "Online Submission + Local Verification",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "Only if officer flags discrepancy",
+    "tips": ["Keep self-declaration forms printed, signed, and scanned before upload"],
+    "warnings": ["Check official state web address ends with .gov.in or .mahaonline.gov.in"],
+    "commonIssues": []
+  },
+  "state_up": {
+    "id": "state_up",
+    "name": "e-District UP (Uttar Pradesh)",
+    "icon": "🏢",
+    "category": "State Services",
+    "description": "Official Uttar Pradesh government services for birth, death, caste, and income certificates",
+    "applyLink": "https://edistrict.up.gov.in",
+    "requiredDocuments": ["Aadhaar", "Self-Declaration", "Verification report by local Lekhpal"],
+    "steps": [
+      { "number": 1, "title": "Citizen Login", "description": "Register on the citizen portal 'e-Sathi'", "duration": "5m", "online": true },
+      { "number": 2, "title": "Submit Form", "description": "Fill details for required certificate", "duration": "15m", "online": true },
+      { "number": 3, "title": "Lekhpal Visit", "description": "Local administrative officer reviews information", "duration": "10 days", "online": false }
+    ],
+    "estimatedTime": "15 days",
+    "fees": "₹15 - ₹30 processing fee",
+    "processType": "Online Submission + Lekhpal Check",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Get verified reports from your local Lekhpal for faster processing"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "state_ka": {
+    "id": "state_ka",
+    "name": "Seva Sindhu (Karnataka)",
+    "icon": "🏢",
+    "category": "State Services",
+    "description": "Integrated portal providing access to various government departments in Karnataka",
+    "applyLink": "https://sevasindhu.karnataka.gov.in",
+    "requiredDocuments": ["Aadhaar", "Ration Card", "Residence Proof"],
+    "steps": [
+      { "number": 1, "title": "Sign In", "description": "Access system through Digilocker credentials or login registration", "duration": "5m", "online": true },
+      { "number": 2, "title": "Fill details", "description": "Select specific department and fill out form parameters", "duration": "15m", "online": true }
+    ],
+    "estimatedTime": "15-30 days",
+    "fees": "Nominal convenience fee",
+    "processType": "100% Online Application",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Track application status using mobile reference number on SMS"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "state_dl": {
+    "id": "state_dl",
+    "name": "e-District Delhi",
+    "icon": "🏢",
+    "category": "State Services",
+    "description": "Government of NCT Delhi portal for Domicile, Caste, and Marriage Certificates",
+    "applyLink": "https://edistrict.delhigovt.nic.in",
+    "requiredDocuments": ["Aadhaar", "Self-declaration verified by Notary", "Address records in Delhi for 3+ years"],
+    "steps": [
+      { "number": 1, "title": "Verify Profile", "description": "Register using Aadhaar or Voter ID record", "duration": "5m", "online": true },
+      { "number": 2, "title": "Select Service", "description": "Fill up forms and upload scans", "duration": "15m", "online": true },
+      { "number": 3, "title": "Physical Visit", "description": "Visit Sub-Divisional Magistrate (SDM) office with originals if ordered", "duration": "1h", "online": false }
+    ],
+    "estimatedTime": "15-30 days",
+    "fees": "Free",
+    "processType": "Online Application + Verification",
+    "officeVisitRequired": true,
+    "officeVisitTiming": "When scheduled by SDM for marriage certificates or verification checks",
+    "tips": ["Ensure your documents match the name spelling on your school certificate"],
+    "warnings": [],
+    "commonIssues": []
+  },
+  "state_tn": {
+    "id": "state_tn",
+    "name": "tNeGA / TN e-Sevai (Tamil Nadu)",
+    "icon": "🏢",
+    "category": "State Services",
+    "description": "Tamil Nadu e-Governance portal for certificates and utility applications",
+    "applyLink": "https://www.tnesevai.tn.gov.in",
+    "requiredDocuments": ["Aadhaar", "Smart Card / Ration Card", "Photo of applicant", "Address records"],
+    "steps": [
+      { "number": 1, "title": "Register CAN", "description": "Register CAN (Citizen Access Number) to initialize portal access", "duration": "10m", "online": true },
+      { "number": 2, "title": "Choose Service", "description": "Select certificates/revenue department services", "duration": "10m", "online": true },
+      { "number": 3, "title": "Payment", "description": "Complete payment using netbanking/cards", "duration": "2m", "online": true }
+    ],
+    "estimatedTime": "15 days",
+    "fees": "₹60 per certificate registration",
+    "processType": "Online Application via CAN",
+    "officeVisitRequired": false,
+    "officeVisitTiming": "N/A",
+    "tips": ["Always register CAN with active mobile number since all update warnings use CAN"],
     "warnings": [],
     "commonIssues": []
   },
@@ -92,43 +429,24 @@
     "warnings": [],
     "commonIssues": []
   },
-  "voter": {
-    "id": "voter",
-    "name": "Voter ID",
-    "icon": "🗳️",
-    "category": "Identity",
-    "description": "Identity card used for voting in elections",
-    "applyLink": "https://www.nvsp.in",
-    "requiredDocuments": ["Identity Proof", "Address Proof", "Age Proof"],
+  "pan": {
+    "id": "pan",
+    "name": "PAN Card",
+    "icon": "💳",
+    "category": "Finance",
+    "description": "Permanent Account Number for tax purposes",
+    "applyLink": "https://www.onlineservices.nsdl.com",
+    "requiredDocuments": ["Aadhaar", "Identity Proof", "Address Proof"],
     "steps": [
-      { "number": 1, "title": "Apply Online", "description": "Fill Form 6 on NVSP portal", "duration": "15m", "online": true }
+      { "number": 1, "title": "Apply Online", "description": "Fill Form 49A/49AA", "duration": "15m", "online": true },
+      { "number": 2, "title": "Verify", "description": "Digital or Physical verification", "duration": "5m", "online": true }
     ],
-    "estimatedTime": "30 days",
-    "fees": "Free",
+    "estimatedTime": "15 days",
+    "fees": "₹107",
     "processType": "100% Online",
     "officeVisitRequired": false,
     "officeVisitTiming": "N/A",
-    "tips": [],
-    "warnings": [],
-    "commonIssues": []
-  },
-  "digilocker": {
-    "id": "digilocker",
-    "name": "DigiLocker",
-    "icon": "📂",
-    "category": "Digital",
-    "description": "Store and access documents digitally",
-    "applyLink": "https://www.digilocker.gov.in",
-    "requiredDocuments": ["Aadhaar", "Mobile Phone"],
-    "steps": [
-      { "number": 1, "title": "Sign Up", "description": "Register with mobile and Aadhaar", "duration": "2m", "online": true }
-    ],
-    "estimatedTime": "Instant",
-    "fees": "Free",
-    "processType": "100% Online",
-    "officeVisitRequired": false,
-    "officeVisitTiming": "N/A",
-    "tips": ["Keep your Aadhaar linked mobile handy"],
+    "tips": ["Use e-KYC for faster processing"],
     "warnings": [],
     "commonIssues": []
   },
@@ -156,7 +474,7 @@
     "id": "abha",
     "name": "Health ID (ABHA)",
     "icon": "🏥",
-    "category": "Health",
+    "category": "Identity",
     "description": "Digital health identity card",
     "applyLink": "https://abha.abdm.gov.in",
     "requiredDocuments": ["Aadhaar", "Mobile"],
@@ -176,7 +494,7 @@
     "id": "ration",
     "name": "Ration Card",
     "icon": "🌾",
-    "category": "Welfare",
+    "category": "Identity",
     "description": "Access subsidized food grains",
     "applyLink": "https://nfsa.gov.in",
     "requiredDocuments": ["Aadhaar", "Family Income Proof", "Address Proof"],
@@ -238,7 +556,7 @@
     "id": "eshram",
     "name": "E-Shram Card",
     "icon": "👷",
-    "category": "Welfare",
+    "category": "Identity",
     "description": "National Database of Unorganized Workers",
     "applyLink": "https://register.eshram.gov.in",
     "requiredDocuments": ["Aadhaar", "Bank Account Details", "Mobile linked with Aadhaar"],
@@ -260,7 +578,7 @@
     "id": "ayushman",
     "name": "Ayushman Bharat Card",
     "icon": "🩺",
-    "category": "Health",
+    "category": "Identity",
     "description": "Health coverage of up to ₹5 Lakhs per family per year",
     "applyLink": "https://beneficiary.nha.gov.in",
     "requiredDocuments": ["Aadhaar", "Ration Card / PMJAY Letter"],
@@ -282,7 +600,7 @@
     "id": "udyam",
     "name": "Udyam Registration",
     "icon": "🏭",
-    "category": "Business",
+    "category": "Identity",
     "description": "MSME registration for small businesses and enterprises",
     "applyLink": "https://udyamregistration.gov.in",
     "requiredDocuments": ["Aadhaar", "PAN", "Bank Account Details"],

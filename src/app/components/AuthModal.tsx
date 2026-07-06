@@ -71,6 +71,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
           className="relative w-full max-w-md glass-card border-white/10 overflow-hidden shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
+          {/* Top Ambient Neon Strip */}
+          <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[#00e699] to-transparent shadow-[0_0_15px_rgba(0,230,153,0.8)]"></div>
+
           {/* Header */}
           <div className="relative p-8 pb-0">
             {closable && (
@@ -167,14 +170,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <button className="flex items-center justify-center gap-3 bg-white/5 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-all font-bold text-xs">
+              <div className="w-full">
+                <button className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-all font-bold text-xs">
                   <Chrome className="w-4 h-4 text-red-500" />
-                  Google
-                </button>
-                <button className="flex items-center justify-center gap-3 bg-white/5 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-all font-bold text-xs">
-                  <Github className="w-4 h-4" />
-                  GitHub
+                  Continue with Google
                 </button>
               </div>
             </div>
