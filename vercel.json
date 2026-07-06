@@ -1,12 +1,6 @@
 {
-  "services": {
-    "frontend": {
-      "root": ".",
-      "buildCommand": "vite build",
-      "outputDirectory": "dist",
-      "framework": "vite"
-    }
-  },
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
