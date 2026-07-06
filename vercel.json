@@ -1,6 +1,8 @@
 {
+  "name": "docuassist-ai",
   "services": {
     "frontend": {
+      "root": ".",
       "buildCommand": "vite build",
       "outputDirectory": "dist",
       "framework": "vite",
